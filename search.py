@@ -87,12 +87,36 @@ def depthFirstSearch(problem):
     print("Start's successors:", problem.getSuccessors(problem.getStartState()))
     """
     "*** YOUR CODE HERE IF YOU WANT TO PRACTICE ***"
-    util.raiseNotDefined()
+    # initialization
+
+
+
 
 def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""
     "*** YOUR CODE HERE IF YOU WANT TO PRACTICE ***"
-    util.raiseNotDefined()
+    from game import Directions
+
+    # initialization
+    fringe = util.Queue()
+    visitedList = []
+
+    # push the starting point into queue
+    fringe.push((problem.getStartState(), [], 0))
+    # pop out the point
+    (state, toDirection, toCost) = fringe.pop()
+    # add the point to visited list
+    visitedList.append(state)
+
+    while not problem.isGoalState(state):  # while we do not find the goal point
+        successors = problem.getSuccessors(state)  # get the point's successors
+        for son in successors:
+            if not son[0] in visitedList:  # if the successor has not been visited,push it into queue
+                fringe.push((son[0], toDirection + [son[1]], toCost + son[2]))
+                visitedList.append(son[0])  # add this point to visited list
+        (state, toDirection, toCost) = fringe.pop()
+
+    return toDirection
 
 def uniformCostSearch(problem):
     """Search the node of least total cost first."""
@@ -124,10 +148,10 @@ def iterativeDeepeningSearch(problem):
 
     while initialStack.isEmpty():  ## From the start point
         deepValue += 1
-        initialStack.push(([startPoint], []))  # Data on stack: (visited states, actions)
+        initialStack.push(([startPoint], [], 0))  # Data on stack: (visited states, actions)
 
         while not initialStack.isEmpty():
-            (visitedPoint, action) = initialStack.pop()
+            (visitedPoint, action, cost) = initialStack.pop()
             currentState = visitedPoint[-1]
 
             if problem.isGoalState(currentState):
@@ -138,7 +162,9 @@ def iterativeDeepeningSearch(problem):
                     if nextPoint not in visitedPoint:
                         visitedPoint.append(nextPoint)   ## append unvisited point
                         action.append(nextAction)
-                        initialStack.push((visitedPoint, action))
+                        cost = cost + totalCost
+                        initialStack.push((visitedPoint, action, cost))
+                        ## cost = cost - cost[-1]
                         visitedPoint = visitedPoint[:-1]
                         action = action[:-1]
 

@@ -629,7 +629,7 @@ Two functions will be modified
 (1) getSuccessors
 (2) foodHeuristic
 '''
-class CapsuleSearchProblem(PositionSearchProblem):
+class CapsuleSearchProblem:
     def __init__(self, startingGameState):
         self.start = (
             startingGameState.getPacmanPosition(), startingGameState.getFood(), True)
@@ -654,15 +654,15 @@ class CapsuleSearchProblem(PositionSearchProblem):
             dx, dy = Actions.directionToVector(direction)
             nextx, nexty = int(x + dx), int(y + dy)
             if state[2]:
-                if not self.walls[nextx][nexty] and (nextx, nexty) not in state[1].asList():
+                if (not self.walls[nextx][nexty]) and ((nextx, nexty) not in state[1].asList()):
                     nextFood = state[1].copy()
                     nextFood[nextx][nexty] = False
-                    if (nextx, nexty) == self.capsule:
+                    if ((nextx, nexty) == self.capsule):
                         successors.append((((nextx, nexty), nextFood, False), direction, 1))
                     else:
                         successors.append((((nextx, nexty), nextFood, True), direction, 1))
             else:
-                if not self.walls[nextx][nexty]:
+                if (not self.walls[nextx][nexty]):
                     nextFood = state[1].copy()
                     nextFood[nextx][nexty] = False
                     successors.append((((nextx, nexty), nextFood, False), direction, 1))
