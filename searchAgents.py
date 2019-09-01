@@ -637,7 +637,7 @@ class CapsuleSearchProblem:
         self.startingGameState = startingGameState
         self._expanded = 0  # DO NOT CHANGE
         self.heuristicInfo = {}  # A dictionary for the heuristic to store information
-        self.capsule = startingGameState.getCapsules()[0]
+        self.capsule = startingGameState.getCapsules()[0]   ## Add capcule
 
     def getStartState(self):
         return self.start
