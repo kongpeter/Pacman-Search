@@ -697,12 +697,14 @@ def foodHeuristic(state, problem):
     else:
         foodList = foodGrid.asList()
         listLength = len(foodList)
+
         if listLength == 0:
             return 0
-        for food in foodList:
-            prob = PositionSearchProblem(problem.startingGameState, start=position, goal=food, warn=False,
+        else:
+            for food in foodList:
+                prob = PositionSearchProblem(problem.startingGameState, start=position, goal=food, warn=False,
                                          visualize=False)
-            distance.append(manhattanHeuristic(position, prob))
+                distance.append(manhattanHeuristic(position, prob))
 
     minLength = min(distance)
     maxLength = max(distance)
