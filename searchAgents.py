@@ -684,56 +684,6 @@ class CapsuleSearchProblem:
         return cost
 
 
-# def foodHeuristic(state, problem):
-#
-#     position, foodGrid, visitStatus = state
-#
-#     distance = []
-#     if visitStatus:
-#         capsule = problem.capsule
-#         prob = PositionSearchProblem(problem.startingGameState, start=position, goal=capsule, warn=False,
-#                                      visualize=False)
-#         distance.append(manhattanHeuristic(position, prob))
-#     else:
-#         foodList = foodGrid.asList()
-#         listLength = len(foodList)
-#
-#         if listLength == 0:
-#             return 0
-#         else:
-#             for food in foodList:
-#                 prob = PositionSearchProblem(problem.startingGameState, start=position, goal=food, warn=False,
-#                                          visualize=False)
-#                 distance.append(manhattanHeuristic(position, prob))
-#
-#     minLength = min(distance)
-#     maxLength = max(distance)
-#
-#     return 2 * maxLength
-
-
-
-    "*** YOUR CODE HERE ***"
-    #
-    # position, foodGrid = state
-    #
-    # result = 0
-    # distToDots = []
-    #
-    # for x in range(foodGrid.width):
-    #     for y in range(foodGrid.height):
-    #         if (foodGrid[x][y]):
-    #             distToDots.append(mazeDistance(position, (x, y), problem.startingGameState))
-    # if (not len(distToDots) == 0):
-    #     result = max(distToDots)
-    #     return result
-    # return result
-    #
-
-
-
-
-
 
 
 def foodHeuristic(state, problem):
@@ -758,7 +708,6 @@ def foodHeuristic(state, problem):
                 for y in range(foodGrid.height):
                     if (foodGrid[x][y]):
                         distanceToFood.append(mazeDistance(position, (x, y), foodProblem))
-
 
         result = max(distanceToFood)
 
