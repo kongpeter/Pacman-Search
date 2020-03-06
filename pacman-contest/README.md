@@ -1,5 +1,4 @@
-# COMP 90054
-Code adapted by Nir Lipovetzky and Guang Hu.
+# Please see wiki of this project
 # CS188
 ## License Information
 
