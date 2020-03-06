@@ -1,4 +1,5 @@
 # Please see wiki of this project
+[Wiki](https://github.com/kongpeter/Pacman-Search/wiki)
 # CS188
 ## License Information
 
